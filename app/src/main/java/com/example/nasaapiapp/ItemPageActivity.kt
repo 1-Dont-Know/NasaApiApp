@@ -42,7 +42,8 @@ class ItemPageActivity : AppCompatActivity() {
         Glide.with(this).load(imageUrl).into(binding.ivItemImageAip)
     }
 
-    private fun formatDate(date: String?): String {
+    internal fun formatDate(date: String?): String { //for testing
+//    private fun formatDate(date: String?): String {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
         val outputFormat = SimpleDateFormat("MMM d, yyyy h:mm a", Locale.getDefault())
         val parsedDate = inputFormat.parse(date)

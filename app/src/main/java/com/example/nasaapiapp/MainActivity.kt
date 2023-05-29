@@ -19,7 +19,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import okhttp3.*
 import java.io.IOException
-import kotlin.math.min
 
 // Define data classes for JSON response from NASA API
 
@@ -81,12 +80,12 @@ class ItemAdapter(
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    internal lateinit var binding: ActivityMainBinding
 
     private lateinit var data: NasaResponse
 
-    private var currentQuery = ""
-    private var displayedPage = 1
+    internal var currentQuery = ""
+    internal var displayedPage = 1
     private val maxPages = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,17 +106,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
         binding.nextButton.setOnClickListener {
-            if (displayedPage < maxPages) {
+            if (currentQuery.isNotBlank() && displayedPage < maxPages) {
                 binding.prevButton.isEnabled = false
                 binding.nextButton.isEnabled = false
                 displayedPage += 1
                 fetchData(currentQuery)
             }
         }
-    }
 
-    private fun fetchData(query: String) {
+    }
+    internal fun fetchData(query: String) { //for testing
+//    private fun fetchData(query: String) {
         try {
             currentQuery = query
 
@@ -152,7 +153,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updatePage() {
+    internal fun updatePage() { // for testing
+//    private fun updatePage() {
         // Pass all items returned by the NASA API to a new instance of the ItemAdapter and set it as adapter for userList ListView.
         val adapter = ItemAdapter(this, data.collection.items)
         binding.userList.adapter = adapter
@@ -207,3 +209,4 @@ class MainActivity : AppCompatActivity() {
         updatePage()
     }
 }
+
