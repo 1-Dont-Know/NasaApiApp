@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0B3D91"
     android:orientation="vertical"
     android:paddingBottom="20dp"
     tools:context=".ItemPageActivity">
@@ -25,7 +24,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="414dp"
         android:layout_height="wrap_content"
-        android:background="#FC3D21"
+        android:background="#6E51A3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -80,7 +79,7 @@
             android:paddingRight="20dp"
             android:paddingBottom="20dp"
             android:text="TextView"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
     </androidx.core.widget.NestedScrollView>
@@ -92,12 +91,11 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_item_image_aip" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

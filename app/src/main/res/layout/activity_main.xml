@@ -4,41 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <SearchView
         android:id="@+id/searchView"
-        android:queryHint="Search Here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/search_background"
-        android:queryBackground="@android:color/transparent" />
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="Search Here" />
 
     <ListView
         android:id="@+id/userList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchView"
         android:layout_above="@+id/page_controls"
+        android:layout_below="@id/searchView"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/nasa_image" />-->
+        android:layout_marginEnd="16dp" />
 
     <LinearLayout
         android:id="@+id/page_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/prev_button"
@@ -50,7 +44,9 @@
             android:id="@+id/page_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Page 1" />
+            android:fontFamily="@font/montserrat"
+            android:text="Page 1"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/next_button"
@@ -65,8 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:textColor="#FF0000"
-        />
+        tools:textColor="#FF0000" />
 
     <TextView
         android:id="@+id/errorMessage"
@@ -75,6 +70,5 @@
         android:layout_centerInParent="true"
         android:textColor="@android:color/holo_red_dark"
         android:visibility="gone" />
-
 
 </RelativeLayout>
