@@ -1,2 +1,3 @@
 # NasaApiApp
-This app connects to Nasa's Api 
+To see this application and its code please look at the Master Branch
+
