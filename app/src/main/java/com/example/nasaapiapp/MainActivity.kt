@@ -185,17 +185,6 @@ class MainActivity : AppCompatActivity() {
             displayedPage < maxPages
     }
 
-    private fun filterItems(query: String) {
-        val filteredItems =
-            data.collection.items.filter { item -> item.data[0].title.contains(query, ignoreCase = true) }
-        val adapter = ItemAdapter(this@MainActivity, filteredItems)
-        binding.userList.adapter = adapter
-
-        binding.nextButton.isEnabled =
-            displayedPage < maxPages && filteredItems.size >= 100
-    }
-
-
     // Set up SearchView to allow user to search for new query or filter current results by title.
     private fun setupSearchBar() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

@@ -24,13 +24,12 @@ class ItemPageActivity : AppCompatActivity() {
         val imageUrl = intent.getStringExtra("imageUrl")
 
         // Format the date and time
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-        val outputFormat = SimpleDateFormat("MMM d, yyyy h:mm a", Locale.getDefault())
-        val parsedDate = inputFormat.parse(date)
-        val formattedDate = outputFormat.format(parsedDate)
+        val formattedDate = formatDate(date)
+        val descID = formatDescription(id, description)
+
 
         // Formatting the description
-        val descID = "ID: $id\n\n$description"
+//        val descID = "ID: $id\n\n$description"
 
         // Adding the bindings and adding the data to it
         binding.tvImageTitle.text = title
@@ -45,6 +44,17 @@ class ItemPageActivity : AppCompatActivity() {
 
         // Load image using Glide library
         Glide.with(this).load(imageUrl).into(binding.ivItemImageAip)
+    }
+
+    private fun formatDate(date: String?): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("MMM d, yyyy h:mm a", Locale.getDefault())
+        val parsedDate = inputFormat.parse(date)
+        return outputFormat.format(parsedDate)
+    }
+
+    private fun formatDescription(id: String?, description: String?): String {
+        return getString(R.string.description_format, id, description)
     }
 }
 
