@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NasaApiApp</string>
     <string name="description_format">ID: %1$s\n\n%2$s</string>
+    <string name="end_message">Search for a new Item</string>
 </resources>

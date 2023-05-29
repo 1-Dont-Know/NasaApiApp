@@ -132,18 +132,22 @@ class MainActivity : AppCompatActivity() {
                         val body = response.body?.string()
                         val json = Json { ignoreUnknownKeys = true }
                         data = json.decodeFromString(body!!)
-                    } catch (e: Exception) {
-                        println("Error: " + e.message)
-                    } finally {
+
                         runOnUiThread {
                             // Update the data used by the ArrayAdapter on the UI thread after fetching data from API.
                             updatePage()
 
-                            // Set up SearchView to allow user to search for new query or filter current results by title.
+                            // Set up SearchView to allow the user to search for a new query or filter current results by title.
                             setupSearchBar()
+
+                            // Disable nextButton if no items are available on the next page
+                            binding.nextButton.isEnabled = data.collection.items.isNotEmpty()
                         }
+                    } catch (e: Exception) {
+                        println("Error: " + e.message)
                     }
                 }
+
                 override fun onFailure(call: Call, e: IOException) {
                     println("API execute failed")
                 }
@@ -161,6 +165,14 @@ class MainActivity : AppCompatActivity() {
 
         // Set text for pageText TextView to display current page number.
         binding.pageText.text = "Page $displayedPage"
+
+        // Show or hide the end-of-data message based on the availability of data.
+        val endOfDataText = binding.endOfDataText
+        if (data.collection.items.isEmpty()) {
+            endOfDataText.visibility = View.VISIBLE
+        } else {
+            endOfDataText.visibility = View.GONE
+        }
 
         // Set onClickListener for userList items to start ItemPageActivity when an item is clicked.
         binding.userList.setOnItemClickListener { parent, view, position, id ->
@@ -207,6 +219,9 @@ class MainActivity : AppCompatActivity() {
         displayedPage = 1
         fetchData(query)
         updatePage()
+
+        // Disable nextButton until data is retrieved
+        binding.nextButton.isEnabled = false
     }
 }
 
