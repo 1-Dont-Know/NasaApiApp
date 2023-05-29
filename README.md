@@ -32,5 +32,6 @@ The following libraries were used in this app:
 
 <h2>Information</h2>
 This app used the image.nasa.gov API (https://images-api.nasa.gov/). For more information to the API, you can reach the document here: https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf
+<br/>
 The GitHub link to this project is here: https://github.com/1-Dont-Know/NasaApiApp
 
