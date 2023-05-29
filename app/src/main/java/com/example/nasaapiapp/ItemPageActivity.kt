@@ -27,10 +27,6 @@ class ItemPageActivity : AppCompatActivity() {
         val formattedDate = formatDate(date)
         val descID = formatDescription(id, description)
 
-
-        // Formatting the description
-//        val descID = "ID: $id\n\n$description"
-
         // Adding the bindings and adding the data to it
         binding.tvImageTitle.text = title
         binding.tvItemDescription.text = descID
